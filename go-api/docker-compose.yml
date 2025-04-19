@@ -1,0 +1,56 @@
+services:
+  back-s1:
+    container_name: container-back-s1
+    build:
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 6101:8080
+    networks:
+      - study-network1
+
+  # [DOC] 公式 イメージの使用方法と初期化手順（initdb）について記載あり
+  # - https://hub.docker.com/_/mysql
+  mysql-s1:
+    container_name: container-mysql-s1
+    build:
+      dockerfile: ./docker/mysql/Dockerfile
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT}
+    networks:
+      - study-network1
+
+  phpmyadmin-s1:
+    container_name: container-phpmyadmin-s1
+    build:
+      dockerfile: ./docker/phpmyadmin/Dockerfile
+    ports:
+      - 8101:80
+    env_file:
+      - .env
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=${MYSQL_HOST}
+      - PMA_PORT=3306
+      - PMA_USER=${MYSQL_USER}
+      - PMA_PASSWORD=${MYSQL_PASSWORD}
+    networks:
+      - study-network1
+
+networks:
+  study-network1:
+    driver: bridge
