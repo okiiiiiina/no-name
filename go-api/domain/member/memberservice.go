@@ -8,10 +8,12 @@ import (
 
 type MemberPersistence interface {
 	List(ctx context.Context, workspaceID uuid.UUID) ([]Member, error)
+	Create(ctx context.Context, member Member) (Member, error)
 }
 
 type MemberService interface {
 	List(ctx context.Context, workspaceID uuid.UUID) ([]Member, error)
+	Create(ctx context.Context, member Member) (Member, error)
 }
 
 type memberService struct {
@@ -26,4 +28,8 @@ func NewMemberService(repo MemberPersistence) MemberService {
 
 func (s *memberService) List(ctx context.Context, workspaceID uuid.UUID) ([]Member, error) {
 	return s.repo.List(ctx, workspaceID)
+}
+
+func (s *memberService) Create(ctx context.Context, member Member) (Member, error) {
+	return s.repo.Create(ctx, member)
 }

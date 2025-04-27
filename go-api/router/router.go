@@ -44,5 +44,6 @@ func (r *Router) Routes(coredb *sqlx.DB) {
 	r.Route("/", func(r chi.Router) {
 		r.Get("/", handler.HelthCheckHandler)
 		r.Get("/workspace/{wID}/member", memberHandler.HandleList)
+		r.Post("/workspace/{wID}/member", memberHandler.HandleCreate)
 	})
 }

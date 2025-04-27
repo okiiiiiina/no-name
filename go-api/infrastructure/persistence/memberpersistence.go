@@ -31,7 +31,7 @@ func (p *memberPersistence) List(ctx context.Context, workspaceID uuid.UUID) ([]
 
 	members := make([]dm.Member, len(res))
 	for i, r := range res {
-		members[i] = dm.Member{
+		members[i] = dm.Member{ //NewMemberに渡すのがベストプラクティス
 			ID:          r.ID,
 			UserID:      r.UserID,
 			WorkspaceID: r.WorkspaceID,
@@ -44,4 +44,25 @@ func (p *memberPersistence) List(ctx context.Context, workspaceID uuid.UUID) ([]
 	fmt.Println("B", members)
 
 	return members, nil
+}
+
+func (p *memberPersistence) Create(ctx context.Context, member dm.Member) (dm.Member, error) {
+	// fmt.Printf("🍎")
+	createdMember, err := p.q.Create(ctx, en.Member{
+		ID:          member.ID,
+		UserID:      member.UserID,
+		WorkspaceID: member.WorkspaceID,
+		Name:        member.Name,
+		CreatedBy:   member.CreatedBy,
+	})
+	if err != nil {
+		log.Fatalf("failed to create member for workspace_id=%s: %v", member.WorkspaceID, err)
+	}
+
+	return dm.Member{
+		ID:          createdMember.ID,
+		UserID:      createdMember.UserID,
+		WorkspaceID: createdMember.WorkspaceID,
+		Name:        createdMember.Name,
+	}, nil
 }

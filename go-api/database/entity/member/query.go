@@ -10,6 +10,7 @@ import (
 
 type MemberQuery interface {
 	List(ctx context.Context, workspaceID uuid.UUID) ([]Member, error)
+	Create(ctx context.Context, member Member) (Member, error)
 }
 
 type memberQuery struct {
@@ -37,4 +38,26 @@ func (q *memberQuery) List(ctx context.Context, workspaceID uuid.UUID) ([]Member
 	}
 
 	return res, nil
+}
+
+func (q *memberQuery) Create(ctx context.Context, member Member) (Member, error) {
+	// fmt.Printf("🍊")
+	query := `
+	INSERT INTO member (id, user_id, workspace_id, name, created_by, created_at)
+	VALUES (?, ?, ?, ?, ?, NOW())
+  `
+
+	_, err := q.db.ExecContext(ctx, query,
+		member.ID,
+		member.UserID,
+		member.WorkspaceID,
+		member.Name,
+		member.CreatedBy,
+	)
+	if err != nil {
+		// fmt.Printf("🍇")
+		log.Fatalf("failed to create member for workspace_id=%s: %v", member.WorkspaceID, err)
+	}
+
+	return member, nil
 }
