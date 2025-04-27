@@ -2,7 +2,6 @@ package persistence
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	dm "example.com/domain/member"
@@ -29,19 +28,26 @@ func (p *memberPersistence) List(ctx context.Context, workspaceID uuid.UUID) ([]
 		log.Fatalf("failed to list members for workspace_id=%s: %v", workspaceID, err)
 	}
 
+	// members := make([]dm.Member, len(res))
+	// for i, r := range res {
+	// 	members[i] = dm.Member{
+	// 		ID:          r.ID,
+	// 		UserID:      r.UserID,
+	// 		WorkspaceID: r.WorkspaceID,
+	// 		Name:        r.Name,
+	// 		CreatedBy:   r.CreatedBy,
+	// 		UpdatedBy:   r.UpdatedBy,
+	// 	}
+	// }
+
 	members := make([]dm.Member, len(res))
 	for i, r := range res {
-		members[i] = dm.Member{
-			ID:          r.ID,
-			UserID:      r.UserID,
-			WorkspaceID: r.WorkspaceID,
-			Name:        r.Name,
-			CreatedBy:   r.CreatedBy,
-			UpdatedBy:   r.UpdatedBy,
+		data, err := dm.NewMember(r.ID, r.UserID, r.WorkspaceID, r.Name, r.CreatedBy, r.UpdatedBy)
+		if err != nil {
+			log.Fatalf("failed to list members for workspace_id=%s: %v", workspaceID, err)
 		}
+		members[i] = *data
 	}
-
-	fmt.Println("B", members)
 
 	return members, nil
 }
