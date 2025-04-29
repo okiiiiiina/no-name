@@ -1,7 +1,7 @@
 このディレクトリに書いていってください！
-フォルダ名とりあえずnext-frontってしました。
+フォルダ名とりあえず next-front ってしました。
 
-このタイミングでgo-apiの名前を変えちゃうとややこしいので落ち着いたらこんな感じに治したいなと思ってます〜
+このタイミングで go-api の名前を変えちゃうとややこしいので落ち着いたらこんな感じに治したいなと思ってます〜
 
 go-api => backend
 next-front => frontend
@@ -11,4 +11,8 @@ next-front => frontend
 go-api => XXX-front
 next-front => XXX-back
 
-XXXはプロダクト名
+XXX はプロダクト名
+
+↑ 賛成です！いいタイミングで直しましょ〜
+ちゃんとやり出したら諸々環境整備も必要ですね！
+（lint とか formatter とか）
