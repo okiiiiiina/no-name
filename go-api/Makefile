@@ -89,3 +89,7 @@ health-api:
 mem-api:
 	@curl http://localhost:6101/workspace/0195e4d1-5211-7354-a583-a5c83aee8b81/member | jq
 .PHONY: mem-api
+
+post-api:
+	@curl http://localhost:6101/workspace/0195e4d1-5211-7354-a583-a5c83aee8b81/post | jq
+.PHONY: post-api
