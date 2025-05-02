@@ -4,6 +4,10 @@ include .env
 # ========================
 #  ALL
 # ========================
+setup:
+	docker network create study-network1
+.PHONY: setup
+
 build:
 	docker compose build
 .PHONY: build
