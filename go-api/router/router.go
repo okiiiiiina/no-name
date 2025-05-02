@@ -6,7 +6,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/rs/cors"
 
-	dm "example.com/domain/member"
+	dmMember "example.com/domain/member"
+	dmPost "example.com/domain/post"
 
 	handler "example.com/handler"
 	usecase "example.com/usecase"
@@ -34,15 +35,24 @@ func (r *Router) Routes(coredb *sqlx.DB) {
 	// setting
 	memberPersistence := persistence.NewMemberPersistence(coredb)
 
-	memberService := dm.MemberService(memberPersistence)
+	memberService := dmMember.NewMemberService(memberPersistence)
 
 	memberUseCase := usecase.NewMemberUseCase(memberService)
 
 	memberHandler := handler.NewMemberHandler(memberUseCase)
 
+	postPersistence := persistence.NewPostPersistence(coredb)
+
+	postService := dmPost.NewPostService(postPersistence)
+
+	postUseCase := usecase.NewPostUseCase(postService)
+
+	postHandler := handler.NewPostHandler(postUseCase)
+
 	// router
 	r.Route("/", func(r chi.Router) {
 		r.Get("/", handler.HelthCheckHandler)
 		r.Get("/workspace/{wID}/member", memberHandler.HandleList)
+		r.Get("/workspace/{wID}/post", postHandler.HandleList)
 	})
 }
