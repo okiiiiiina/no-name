@@ -1,0 +1,106 @@
+/* 共通スタイル */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 150ms ease;
+  outline: none;
+}
+
+/* バリアントスタイル - プライマリー */
+.button-primary {
+  background-color: #3b82f6;
+  color: white;
+
+  &:not(:disabled):hover {
+    background-color: #2563eb;
+  }
+
+  &:not(:disabled):active {
+    background-color: #1d4ed8;
+  }
+}
+
+/* バリアントスタイル - セカンダリー */
+.button-secondary {
+  background-color: transparent;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+
+  &:not(:disabled):hover {
+    background-color: #d8e7ff7d;
+  }
+
+  &:not(:disabled):active {
+    background-color: #d8e7ff;
+  }
+}
+
+/* バリアントスタイル - テキスト */
+.button-text {
+  background-color: transparent;
+  color: #23221e;
+  box-shadow: none;
+
+  &:not(:disabled):hover {
+    background-color: #03030226;
+  }
+
+  &:not(:disabled):active {
+    background-color: #03030235;
+  }
+}
+
+/* バリアントスタイル - キャンセル */
+.button-cancel {
+  background-color: #6b7280;
+  color: white;
+
+  &:not(:disabled):hover {
+    background-color: #4b5563;
+  }
+
+  &:not(:disabled):active {
+    background-color: #374151;
+  }
+}
+
+/* バリアントスタイル - デンジャー */
+.button-danger {
+  background-color: #ef4444;
+  color: white;
+
+  &:not(:disabled):hover {
+    background-color: #dc2626;
+  }
+
+  &:not(:disabled):active {
+    background-color: #b91c1c;
+  }
+}
+
+/* サイズスタイル */
+.size-sm {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.size-md {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+.size-lg {
+  font-size: 18px;
+  padding: 16px 32px;
+}
+
+/* 無効状態 */
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
