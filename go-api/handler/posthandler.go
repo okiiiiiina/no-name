@@ -2,6 +2,7 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -24,6 +25,7 @@ func NewPostHandler(u u.PostUseCase) PostHandler {
 }
 
 func (h postHandler) HandleList(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("🍎")
 	id := chi.URLParam(r, "wID")
 
 	res, err := h.u.List(r.Context(), id)

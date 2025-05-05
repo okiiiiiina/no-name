@@ -86,14 +86,15 @@ pma-up-d:
 # ========================
 #  api check
 # ========================
-health-api:
+health-check:
 	@curl http://localhost:6101
-.PHONY: hel-api
+.PHONY: health-check
 
-mem-api:
-	@curl http://localhost:6101/workspace/0195e4d1-5211-7354-a583-a5c83aee8b81/member | jq
-.PHONY: mem-api
+mem-get:
+	@curl http://127.0.0.1:6101/workspaces/0195e4d1-5211-7354-a583-a5c83aee8b81/members | jq
+.PHONY: mem-get
 
-post-api:
-	@curl http://localhost:6101/workspace/0195e4d1-5211-7354-a583-a5c83aee8b81/post | jq
-.PHONY: post-api
+post-get:
+	@curl http://localhost:6101/workspaces/0195e4d1-5211-7354-a583-a5c83aee8b81/posts | jq
+.PHONY: post-get
+

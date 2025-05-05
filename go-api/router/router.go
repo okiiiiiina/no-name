@@ -52,7 +52,7 @@ func (r *Router) Routes(coredb *sqlx.DB) {
 	// router
 	r.Route("/", func(r chi.Router) {
 		r.Get("/", handler.HelthCheckHandler)
-		r.Get("/workspace/{wID}/member", memberHandler.HandleList)
-		r.Get("/workspace/{wID}/post", postHandler.HandleList)
+		r.Get("/workspaces/{wID}/posts", postHandler.HandleList)
+		r.Get("/workspaces/{wID}/members", memberHandler.HandleList)
 	})
 }
