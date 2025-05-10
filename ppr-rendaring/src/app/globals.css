@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+/* ブラウザの余白リセット */
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Tailwind のフォントなどが反映されるように */
+body {
+  @apply bg-white text-black;
+}

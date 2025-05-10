@@ -25,7 +25,7 @@ func New() *Router {
 
 func (r *Router) Routes(coredb *sqlx.DB) {
 	cors := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3101"},
+		AllowedOrigins:   []string{"http://localhost:3101", "http://localhost:3000"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token", "Workspace-Id", "Request-From"},
 		AllowCredentials: true,
