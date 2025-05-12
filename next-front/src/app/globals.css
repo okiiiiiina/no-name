@@ -1,5 +1,6 @@
 /* カスタムプロパティの定義 */
 :root {
+  /* color */
   --primary-color: #3b82f6;
   --primary-hover-color: #2563eb;
   --primary-active-color: #1d4ed8;
@@ -14,4 +15,35 @@
   --danger-color: #ef4444;
   --danger-hover-color: #dc2626;
   --danger-active-color: #b91c1c;
+
+  /* font-size */
+  --font-size-xs: 8px;
+  --font-size-sm: 12px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  /* font-weight */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* border-radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 9999px;
+
+  /* spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 56px;
 }
