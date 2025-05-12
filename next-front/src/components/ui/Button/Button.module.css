@@ -13,73 +13,73 @@
 
 /* バリアントスタイル - プライマリー */
 .button-primary {
-  background-color: #3b82f6;
+  background-color: var(--primary-color);
   color: white;
 
   &:not(:disabled):hover {
-    background-color: #2563eb;
+    background-color: var(--primary-hover-color);
   }
 
   &:not(:disabled):active {
-    background-color: #1d4ed8;
+    background-color: var(--primary-active-color);
   }
 }
 
 /* バリアントスタイル - セカンダリー */
 .button-secondary {
   background-color: transparent;
-  color: #3b82f6;
-  border: 1px solid #3b82f6;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 
   &:not(:disabled):hover {
-    background-color: #d8e7ff7d;
+    background-color: var(--secondary-hover-color);
   }
 
   &:not(:disabled):active {
-    background-color: #d8e7ff;
+    background-color: var(--secondary-active-color);
   }
 }
 
 /* バリアントスタイル - テキスト */
 .button-text {
   background-color: transparent;
-  color: #23221e;
+  color: var(--text-color);
   box-shadow: none;
 
   &:not(:disabled):hover {
-    background-color: #03030226;
+    background-color: var(--text-hover-color);
   }
 
   &:not(:disabled):active {
-    background-color: #03030235;
+    background-color: var(--text-active-color);
   }
 }
 
 /* バリアントスタイル - キャンセル */
 .button-cancel {
-  background-color: #6b7280;
+  background-color: var(--cancel-color);
   color: white;
 
   &:not(:disabled):hover {
-    background-color: #4b5563;
+    background-color: var(--cancel-hover-color);
   }
 
   &:not(:disabled):active {
-    background-color: #374151;
+    background-color: var(--cancel-active-color);
   }
 }
 
 /* バリアントスタイル - デンジャー */
 .button-danger {
-  background-color: #ef4444;
+  background-color: var(--danger-color);
   color: white;
 
   &:not(:disabled):hover {
-    background-color: #dc2626;
+    background-color: var(--danger-hover-color);
   }
 
   &:not(:disabled):active {
-    background-color: #b91c1c;
+    background-color: var(--danger-active-color);
   }
 }
 
