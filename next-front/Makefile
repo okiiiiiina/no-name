@@ -1,7 +1,7 @@
 # コンポーネントの雛形を作成
 #
 # Usage:
-#	make gen-component
+# make gen-component
 # > component
 # > src/components/ui
 
