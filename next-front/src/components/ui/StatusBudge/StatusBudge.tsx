@@ -1,9 +1,19 @@
-import styles from "./StatusBudge.module.css"
+import styles from './StatusBudge.module.css';
+
+type Status = 'todo' | 'in_progress' | 'done';
 
 type Props = {
-  children: React.ReactNode;
-}
+  status: Status;
+};
 
-export const StatusBudge: React.FC<Props> = ({ children }) => {
-  return <div className={styles.container}>{children}</div>;
+const statusLabel = {
+  todo: 'Todo',
+  in_progress: 'In Progress',
+  done: 'Done',
+};
+
+export const StatusBudge: React.FC<Props> = ({ status }) => {
+  const style = `${styles.container} ${styles[status]}`;
+
+  return <div className={style}>{statusLabel[status]}</div>;
 };

@@ -1,3 +1,20 @@
 .container {
   display: flex;
+  width: fit-content;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-full);
+  font-size: 14px;
+  color: #fff;
+}
+
+.todo {
+  background-color: rgb(180, 29, 105);
+}
+
+.in_progress {
+  background-color: rgb(14, 12, 141);
+}
+
+.done {
+  background-color: rgb(150, 130, 40);
 }
