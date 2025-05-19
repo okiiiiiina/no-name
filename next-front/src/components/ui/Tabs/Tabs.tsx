@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import styles from './tabs.module.css';
 
 // タブのコンテキスト型定義
@@ -23,15 +23,14 @@ const useTabs = () => {
   return context;
 };
 
-// Tabsコンポーネントのプロップス型定義
+// TabsコンポーネントのProps型定義
 type TabsProps = {
   defaultValue?: string;
   children: React.ReactNode;
-  className?: string;
 };
 
 // メインのTabsコンポーネント
-export const Tabs = ({ defaultValue, children, className = '' }: TabsProps) => {
+export const Tabs: React.FC<TabsProps> = ({ defaultValue, children }) => {
   const [activeTab, setActiveTab] = useState<string>(defaultValue || '');
   const [tabsIds, setTabsIds] = useState<string[]>([]);
 
@@ -52,46 +51,40 @@ export const Tabs = ({ defaultValue, children, className = '' }: TabsProps) => {
     <TabsContext.Provider
       value={{ activeTab, setActiveTab, tabsIds, registerTab }}
     >
-      <div className={`${styles.tabs} ${className}`} data-testid="tabs">
+      <div className={styles.tabs} data-testid="tabs">
         {children}
       </div>
     </TabsContext.Provider>
   );
 };
 
-// TabsListコンポーネントのプロップス型定義
+// TabsListコンポーネントのProps型定義
 type TabsListProps = {
   children: React.ReactNode;
-  className?: string;
 };
 
 // タブリストコンポーネント
-export const TabsList = ({ children, className = '' }: TabsListProps) => {
+export const TabsList: React.FC<TabsListProps> = ({ children }) => {
   return (
-    <div className={`${styles.tabsList} ${className}`} role="tablist">
+    <div className={styles.tabsList} role="tablist">
       {children}
     </div>
   );
 };
 
-// TabTriggerコンポーネントのプロップス型定義
+// TabTriggerコンポーネントのProps型定義
 type TabTriggerProps = {
   value: string;
   children: React.ReactNode;
-  className?: string;
 };
 
-// タブトリガーコンポーネント
-export const TabTrigger = ({
-  value,
-  children,
-  className = '',
-}: TabTriggerProps) => {
+// トリガーコンポーネント
+export const TabTrigger: React.FC<TabTriggerProps> = ({ value, children }) => {
   const { activeTab, setActiveTab, registerTab } = useTabs();
   const isActive = activeTab === value;
 
   // コンポーネントがマウントされたときにタブを登録
-  React.useEffect(() => {
+  useEffect(() => {
     registerTab(value);
   }, [value, registerTab]);
 
@@ -108,10 +101,7 @@ export const TabTrigger = ({
       type="button"
       role="tab"
       aria-selected={isActive}
-      tabIndex={isActive ? 0 : -1}
-      className={`${styles.tabTrigger} ${
-        isActive ? styles.active : ''
-      } ${className}`}
+      className={`${styles.tabTrigger} ${isActive ? styles.active : ''}`}
       onClick={() => setActiveTab(value)}
       onKeyDown={handleKeyDown}
       id={`tab-${value}`}
@@ -124,19 +114,14 @@ export const TabTrigger = ({
   );
 };
 
-// TabContentコンポーネントのプロップス型定義
+// TabContentコンポーネントのProps型定義
 type TabContentProps = {
   value: string;
   children: React.ReactNode;
-  className?: string;
 };
 
-// タブコンテンツコンポーネント
-export const TabContent = ({
-  value,
-  children,
-  className = '',
-}: TabContentProps) => {
+// コンテンツコンポーネント
+export const TabContent: React.FC<TabContentProps> = ({ value, children }) => {
   const { activeTab } = useTabs();
   const isActive = activeTab === value;
 
@@ -145,7 +130,7 @@ export const TabContent = ({
   return (
     <div
       role="tabpanel"
-      className={`${styles.tabContent} ${className}`}
+      className={styles.tabContent}
       id={`tabpanel-${value}`}
       aria-labelledby={`tab-${value}`}
     >
