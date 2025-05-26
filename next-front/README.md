@@ -4,13 +4,14 @@
 
 ## 2. 環境構築・セットアップ
 
-- 諸々記載していく
 - bun が入っていない場合（Mac）
   - `curl -fsSL https://bun.sh/install | bash`
 - パッケージのインストール
   - `bun i`
 - アプリケーションの立ち上げ
   - `bun run dev`
+- Storybook の立ち上げ
+  - `bun run storybook`
 
 ## ディレクトリ構成
 
@@ -82,5 +83,7 @@ src/
 - ~~
 
 #### .src/components/page
+
+- ~~
 
 ...
