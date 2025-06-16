@@ -7,12 +7,11 @@ const meta: Meta<typeof Tabs> = {
   tags: ['autodocs'],
   args: {
     defaultValue: 'tab1',
-    children: ['tab1', 'tab2', 'tab3'],
   },
   argTypes: {
     defaultValue: {
       control: 'text',
-      description: 'デフォルトで選択されるタブの値',
+      description: 'Tabsコンポーネントに渡すデフォルトで選択されるタブの値',
       table: {
         type: {
           summary: 'string',
@@ -21,11 +20,14 @@ const meta: Meta<typeof Tabs> = {
       defaultValue: 'tab1',
     },
     children: {
-      description: 'タブの内容',
-      control: {
-        type: 'object',
-        select: ['tab1', 'tab2', 'tab3'],
-      },
+      control: 'object',
+      description:
+        'それぞれのタブのラベルとコンテンツ。TabTriggerコンポーネントとTabContentコンポーネントそれぞれにchildrenとvalueを渡す。',
+      // table: {
+      //   type: {
+      //     summary: 'React.ReactNode',
+      //   },
+      // },
     },
   },
 };
