@@ -1,0 +1,292 @@
+/* Sidebarコンポーネントのベーススタイル */
+.sidebar {
+  /* CSS変数を使用してコンポーネント外から幅を制御可能にする */
+  width: var(--sidebar-width, 280px);
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 左側配置のスタイル */
+.left {
+  left: 0;
+  border-right: 1px solid #e0e0e0;
+  border-left: none;
+}
+
+/* 右側配置のスタイル */
+.right {
+  right: 0;
+  border-left: 1px solid #e0e0e0;
+  border-right: none;
+}
+
+/* permanentバリアント（常時表示） */
+.permanent {
+  position: relative;
+  box-shadow: none;
+  border: none;
+  left: auto;
+  right: auto;
+}
+
+/* temporaryバリアント（一時的表示） */
+.temporary {
+  position: fixed;
+}
+
+/* 開いている状態 */
+.open {
+  transform: translateX(0);
+}
+
+/* 閉じている状態 */
+.closed.left {
+  transform: translateX(-100%);
+}
+
+.closed.right {
+  transform: translateX(100%);
+}
+
+/* permanentバリアントが閉じている場合は非表示 */
+.permanent.closed {
+  display: none;
+}
+
+/* アニメーション無効化 */
+.noAnimation {
+  transition: none;
+}
+
+/* Sidebarヘッダー */
+.header {
+  padding: 20px 16px 16px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+
+/* Sidebar内コンテンツのコンテナ */
+.content {
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ナビゲーション */
+.navigation {
+  flex: 1;
+  padding: 8px 0;
+}
+
+.navigationList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigationItem {
+  margin: 0;
+}
+
+.navigationLink {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #374151;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border-left: 3px solid transparent;
+}
+
+.navigationLink:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border-left-color: #3b82f6;
+}
+
+.navigationLink:focus {
+  outline: none;
+  background-color: #e5e7eb;
+  box-shadow: inset 0 0 0 2px #3b82f6;
+}
+
+.navigationLink:active,
+.navigationLink[aria-current='page'] {
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-left-color: #3b82f6;
+  font-weight: 600;
+}
+
+.navigationIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.navigationText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* temporaryバリアント用オーバーレイ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  cursor: pointer;
+  /* オーバーレイのフェードインアニメーション */
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* オーバーレイのフェードインアニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* タブレット以下のレスポンシブ対応 */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* モバイルでは常にtemporaryバリアントとして動作 */
+  .permanent {
+    position: fixed;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* モバイルでも左右の位置を保持 */
+    left: auto;
+    right: auto;
+  }
+
+  .permanent.left {
+    left: 0;
+  }
+
+  .permanent.right {
+    right: 0;
+  }
+}
+
+/* スマートフォン向けレスポンシブ対応 */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .header {
+    padding: 16px 12px 12px 12px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .navigationLink {
+    padding: 10px 12px;
+  }
+
+  .navigationIcon {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
+
+  .navigationText {
+    font-size: 13px;
+  }
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background-color: #1a1a1a;
+    border-color: #333333;
+    color: #ffffff;
+  }
+
+  .header {
+    background-color: #2d3748;
+    border-color: #4a5568;
+  }
+
+  .title {
+    color: #f7fafc;
+  }
+
+  .navigationLink {
+    color: #e2e8f0;
+  }
+
+  .navigationLink:hover {
+    background-color: #2d3748;
+    color: #ffffff;
+    border-left-color: #63b3ed;
+  }
+
+  .navigationLink:focus {
+    background-color: #4a5568;
+    box-shadow: inset 0 0 0 2px #63b3ed;
+  }
+
+  .navigationLink:active,
+  .navigationLink[aria-current='page'] {
+    background-color: #1a365d;
+    color: #90cdf4;
+    border-left-color: #63b3ed;
+    font-weight: 600;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* アクセシビリティ: reduced-motionが設定されている場合はアニメーションを無効化 */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+
+  .noAnimation {
+    transition: none;
+  }
+
+  .overlay {
+    animation: none;
+  }
+}
