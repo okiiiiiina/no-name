@@ -34,6 +34,9 @@ export const Button: React.FC<Props> = ({
       className={buttonClass}
       disabled={disabled}
       onClick={onClick}
+      data-variant={variant}
+      data-size={size}
+      data-testid="button"
     >
       {children}
     </Component>
