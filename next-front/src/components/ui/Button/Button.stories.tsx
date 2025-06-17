@@ -74,6 +74,14 @@ const meta = {
         type: { summary: 'React.ReactNode' },
       },
     },
+    asChild: {
+      description: 'ボタンの子要素を使用するかどうか',
+      control: 'boolean',
+      defaultValue: false,
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
