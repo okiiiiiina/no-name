@@ -99,7 +99,7 @@ export const Primary: Story = {
     const button = canvas.getByRole('button', { name: 'Button' });
     await expect(button).toBeInTheDocument();
 
-    // data属性でプライマリーバリアントが適用されていることを確認
+    // data属性でPrimaryが適用されていることを確認
     await expect(button).toHaveAttribute('data-variant', 'primary');
 
     // ボタンがクリック可能であることを確認
@@ -240,7 +240,6 @@ export const Large: Story = {
   },
 };
 
-// 無効状態のテスト用ストーリーを追加
 export const Disabled: Story = {
   args: {
     disabled: true,
