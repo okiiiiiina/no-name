@@ -1,0 +1,122 @@
+import {
+  Canvas,
+  Meta,
+  Markdown,
+  Controls,
+  Primary,
+} from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Overview
+
+- Button コンポーネントは、ボタンのスタイルを提供します。
+- Props を使用して、ボタンのスタイル等をカスタマイズできます。
+
+<Primary />
+
+## Props
+
+<Controls />
+
+{/* マークダウンでも記述できるが、Controls の方がより詳細に設定できる */}
+
+<Markdown>
+  {`
+| 名前 | 説明 | デフォルト | 必須 |
+| ---------- | ---------------------- | ---------- | ---- |
+| \`type\` | ボタンのタイプ | \`button\` | ✕ |
+| \`variant\` | ボタンのバリエーション | \`primary\` | ✕ |
+| \`size\` | ボタンのサイズ | \`md\` | ✕ |
+| \`children\` | ボタンのラベル | \`Button\` | ✕ |
+`}
+</Markdown>
+
+## ボタンの種類
+
+- variant を指定することで、ボタンのスタイルを変更できます。
+
+### Primary
+
+- 基本のスタイル
+
+<Canvas of={ButtonStories.Primary} />
+
+```tsx
+<Button>Button</Button>
+```
+
+### Secondary
+
+- セカンダリーのスタイル（白抜き）
+
+<Canvas of={ButtonStories.Secondary} />
+
+```tsx
+<Button variant="secondary">Button</Button>
+```
+
+### Text
+
+- テキストボタン（背景色なし）
+
+<Canvas of={ButtonStories.Text} />
+
+```tsx
+<Button variant="text">Button</Button>
+```
+
+### Cancel
+
+- キャンセルボタン
+
+<Canvas of={ButtonStories.Cancel} />
+
+```tsx
+<Button variant="cancel">Button</Button>
+```
+
+### Danger
+
+- 削除ボタン
+
+<Canvas of={ButtonStories.Danger} />
+
+```tsx
+<Button variant="danger">Button</Button>
+```
+
+## ボタンのサイズ
+
+- size を指定することで、ボタンのサイズを変更できます。
+
+### Small
+
+- 小さいサイズ
+
+<Canvas of={ButtonStories.Small} />
+
+```tsx
+<Button size="sm">Button</Button>
+```
+
+### Medium
+
+- 標準のサイズ
+
+<Canvas of={ButtonStories.Medium} />
+
+```tsx
+<Button size="md">Button</Button>
+```
+
+### Large
+
+- 大きいサイズ
+
+<Canvas of={ButtonStories.Large} />
+
+```tsx
+<Button size="lg">Button</Button>
+```
