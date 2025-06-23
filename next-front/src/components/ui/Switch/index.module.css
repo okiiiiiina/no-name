@@ -1,0 +1,151 @@
+/* Switchのベーススタイル */
+.switch {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  position: relative;
+  transition: all 150ms ease;
+  outline: none;
+
+  /* フォーカススタイル */
+  &:focus-visible {
+    outline: 2px solid var(--primary-color, #324bd7);
+    outline-offset: 2px;
+  }
+}
+
+/* Switchの無効状態 */
+.switch.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* トラック（背景部分）のスタイル */
+.track {
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  position: relative;
+  transition: background-color 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px;
+}
+
+/* チェック状態のトラック */
+.trackChecked {
+  background-color: var(--primary-color, #324bd7);
+}
+
+/* 無効状態のトラック */
+.trackDisabled {
+  background-color: #d1d5db;
+}
+
+/* サム（つまみ部分）のスタイル */
+.thumb {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 150ms ease;
+  display: block;
+  position: relative;
+}
+
+/* チェック状態のサム */
+.thumbChecked {
+  transform: translateX(100%);
+}
+
+/* サイズバリエーション - Small */
+.size-sm .track {
+  width: 32px;
+  height: 18px;
+}
+
+.size-sm .thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.size-sm .thumbChecked {
+  transform: translateX(14px);
+}
+
+/* サイズバリエーション - Medium（デフォルト） */
+.size-md .track {
+  width: 44px;
+  height: 24px;
+}
+
+.size-md .thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.size-md .thumbChecked {
+  transform: translateX(20px);
+}
+
+/* サイズバリエーション - Large */
+.size-lg .track {
+  width: 56px;
+  height: 32px;
+}
+
+.size-lg .thumb {
+  width: 28px;
+  height: 28px;
+}
+
+.size-lg .thumbChecked {
+  transform: translateX(24px);
+}
+
+/* ホバー効果 */
+.switch:not(.disabled):hover .track {
+  box-shadow: 0 0 0 2px rgba(50, 75, 215, 0.1);
+}
+
+.switch:not(.disabled):hover .trackChecked {
+  background-color: var(--primary-hover-color, #2938b8);
+}
+
+/* アクティブ状態 */
+.switch:not(.disabled):active .thumb {
+  transform: scale(0.95);
+}
+
+.switch:not(.disabled):active .thumbChecked {
+  transform: translateX(20px) scale(0.95);
+}
+
+.size-sm .switch:not(.disabled):active .thumbChecked {
+  transform: translateX(14px) scale(0.95);
+}
+
+.size-lg .switch:not(.disabled):active .thumbChecked {
+  transform: translateX(24px) scale(0.95);
+}
+
+/* 高コントラストモード対応 */
+@media (prefers-contrast: high) {
+  .track {
+    border: 2px solid currentColor;
+  }
+
+  .thumb {
+    border: 1px solid currentColor;
+  }
+}
+
+/* リデュースモーション対応 */
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .track,
+  .thumb {
+    transition: none;
+  }
+}
