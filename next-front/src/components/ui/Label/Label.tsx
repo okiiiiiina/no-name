@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.module.css';
+import styles from './Label.module.css';
 
 // ラベルコンポーネントのProps型定義
 type LabelProps = {

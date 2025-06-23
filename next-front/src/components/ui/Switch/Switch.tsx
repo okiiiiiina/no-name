@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.module.css';
+import styles from './Switch.module.css';
 
 type Props = {
   /** Switchのチェック状態 */

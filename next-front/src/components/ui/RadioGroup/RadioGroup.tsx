@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './index.module.css';
-import { RadioGroupContext } from '../RadioGroupItem';
+import styles from './RadioGroup.module.css';
+import { RadioGroupContext } from '../RadioGroupItem/RadioGroupItem';
 
 // RadioGroupのProps型定義
 type RadioGroupProps = {
@@ -107,5 +107,5 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
 };
 
 // 便利なエクスポート（分離されたコンポーネントの再エクスポート）
-export { RadioGroupItem } from '../RadioGroupItem';
-export { Label } from '../Label';
+export { RadioGroupItem } from '../RadioGroupItem/RadioGroupItem';
+export { Label } from '../Label/Label';

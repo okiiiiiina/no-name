@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './index.module.css';
-import { Label } from '../Label';
+import styles from './RadioGroupItem.module.css';
+import { Label } from '../Label/Label';
 
 // RadioGroupItemのProps型定義
 type RadioGroupItemProps = {
