@@ -1,0 +1,15 @@
+/* ラベルのスタイル */
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  cursor: pointer;
+  line-height: 1.5;
+  user-select: none;
+  transition: color 0.2s ease-in-out;
+}
+
+/* ラベルにホバーした時のスタイル */
+.label:hover {
+  color: #111827;
+}
