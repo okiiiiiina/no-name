@@ -62,6 +62,13 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    label: {
+      description: 'ラジオボタンのラベル',
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
     disabled: {
       description: 'コンポーネントの無効化状態',
       control: 'boolean',
@@ -116,8 +123,7 @@ export const Selected: Story = {
   render: (args) => (
     <MockRadioGroupProvider selectedValue="option1">
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <RadioGroupItem {...args} />
-        <label htmlFor={args.id}>選択されたラジオボタン</label>
+        <RadioGroupItem {...args} label="選択されたラジオボタン" />
       </div>
     </MockRadioGroupProvider>
   ),
@@ -140,8 +146,7 @@ export const Disabled: Story = {
   render: (args) => (
     <MockRadioGroupProvider>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <RadioGroupItem {...args} />
-        <label htmlFor={args.id}>無効化されたラジオボタン</label>
+        <RadioGroupItem {...args} label="無効化されたラジオボタン" />
       </div>
     </MockRadioGroupProvider>
   ),
@@ -161,8 +166,7 @@ export const GroupDisabled: Story = {
   render: (args) => (
     <MockRadioGroupProvider disabled={true}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <RadioGroupItem {...args} />
-        <label htmlFor={args.id}>グループ無効化されたラジオボタン</label>
+        <RadioGroupItem {...args} label="グループ無効化されたラジオボタン" />
       </div>
     </MockRadioGroupProvider>
   ),
@@ -195,16 +199,25 @@ export const MultipleItems: Story = {
             style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <RadioGroupItem value="option1" id="multi-option1" />
-              <label htmlFor="multi-option1">オプション 1</label>
+              <RadioGroupItem
+                value="option1"
+                id="multi-option1"
+                label="オプション 1"
+              />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <RadioGroupItem value="option2" id="multi-option2" />
-              <label htmlFor="multi-option2">オプション 2</label>
+              <RadioGroupItem
+                value="option2"
+                id="multi-option2"
+                label="オプション 2"
+              />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <RadioGroupItem value="option3" id="multi-option3" />
-              <label htmlFor="multi-option3">オプション 3</label>
+              <RadioGroupItem
+                value="option3"
+                id="multi-option3"
+                label="オプション 3"
+              />
             </div>
           </div>
         </MockRadioGroupProvider>

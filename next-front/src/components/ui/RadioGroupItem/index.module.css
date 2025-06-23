@@ -1,4 +1,10 @@
 /* RadioGroupItem（ラジオボタン）のスタイル */
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .radioItem {
   width: 18px;
   height: 18px;
@@ -62,4 +68,14 @@
 
 .radioItem.disabled.checked::after {
   background-color: #f3f4f6;
+}
+
+.label {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.label.disabled {
+  cursor: not-allowed;
 }

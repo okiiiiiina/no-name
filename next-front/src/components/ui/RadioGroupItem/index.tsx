@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.module.css';
+import { Label } from '../Label';
 
 // RadioGroupItemのProps型定義
 type RadioGroupItemProps = {
@@ -7,6 +8,8 @@ type RadioGroupItemProps = {
   value: string;
   /** ラジオボタンのID */
   id: string;
+  /** ラジオボタンのラベル */
+  label: string;
   /** disabled状態の管理 */
   disabled?: boolean;
   /** 追加のクラス名 */
@@ -38,6 +41,7 @@ export const RadioGroupContext =
 export const RadioGroupItem: React.FC<RadioGroupItemProps> = ({
   value,
   id,
+  label,
   disabled = false,
   className,
 }) => {
@@ -57,6 +61,10 @@ export const RadioGroupItem: React.FC<RadioGroupItemProps> = ({
     isDisabled ? styles.disabled : ''
   } ${className || ''}`.trim();
 
+  const labelClass = `${styles.label} ${
+    isDisabled ? styles.disabled : ''
+  }`.trim();
+
   // 値変更ハンドラー
   const handleChange = () => {
     if (isDisabled) return;
@@ -64,16 +72,21 @@ export const RadioGroupItem: React.FC<RadioGroupItemProps> = ({
   };
 
   return (
-    <input
-      type="radio"
-      id={id}
-      name={name}
-      value={value}
-      checked={isChecked}
-      disabled={isDisabled}
-      onChange={handleChange}
-      className={radioClass}
-      data-testid={`radio-item-${value}`}
-    />
+    <div className={styles.container}>
+      <input
+        type="radio"
+        id={id}
+        name={name}
+        value={value}
+        checked={isChecked}
+        disabled={isDisabled}
+        onChange={handleChange}
+        className={radioClass}
+        data-testid={`radio-item-${value}`}
+      />
+      <Label htmlFor={id} className={labelClass}>
+        {label}
+      </Label>
+    </div>
   );
 };
