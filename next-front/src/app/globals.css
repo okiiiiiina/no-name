@@ -7,6 +7,7 @@
   --secondary-hover-color: #d8e7ff7d;
   --secondary-active-color: #d8e7ff;
   --text-color: #23221e;
+  --text-white-color: #fff;
   --text-hover-color: #03030226;
   --text-active-color: #03030235;
   --cancel-color: #6b7280;
@@ -15,6 +16,11 @@
   --danger-color: #ef4444;
   --danger-hover-color: #dc2626;
   --danger-active-color: #b91c1c;
+
+  /* font-family */
+  --font-family-sans: 'Noto Sans JP', sans-serif;
+  --font-family-nunito: 'Nunito', sans-serif;
+  --font-family-meiryo: 'Meiryo', sans-serif;
 
   /* font-size */
   --font-size-xs: 8px;
