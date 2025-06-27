@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--primary-color);
+  color: var(--text-white-color);
+  font-family: var(--font-family-nunito);
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
